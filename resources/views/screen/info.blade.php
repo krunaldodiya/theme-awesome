@@ -33,7 +33,11 @@
                         @foreach( $screen->tags as $tag)
                         <div style="margin: 5px; padding: 5px">
                             <div style="font-weight: 500; font-size: 16px; color: black;">
-                                <span>{{ $tag->name }}</span>
+                                <span>{{ $tag->key }}</span>
+                            </div>
+
+                            <div style="font-weight: normal; font-size: 12px; color: gray;">
+                                <span>{{ $tag->description }}</span>
                             </div>
                         </div>
                         @endforeach

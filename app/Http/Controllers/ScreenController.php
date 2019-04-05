@@ -9,7 +9,7 @@ class ScreenController extends Controller
 {
     public function info(Request $request)
     {
-        $screen = Screen::with('project', 'tags')->where('id', $request->project_id)->first();
+        $screen = Screen::with('project', 'tags')->where('id', $request->screen_id)->first();
 
         return view('screen.info', compact('screen'));
     }

@@ -22,9 +22,15 @@ class TagController extends Controller
 
     public function store(TagRequest $request)
     {
-        dd($request->all());
+        $exits = Tag::where(['project_id' => $request->project_id, 'key' => $request->key])->count();
 
-        return Tag::create();
+        if ($exits) {
+            return redirect()->back()->withErrors(['exists' => 'Key must be unique']);
+        }
+
+        Tag::create($request->all());
+
+        return redirect()->to("/project/$request->project_id/screen/$request->screen_id/info");
     }
 
     public function delete(Request $request)

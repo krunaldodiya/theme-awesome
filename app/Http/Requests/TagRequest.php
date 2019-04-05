@@ -13,7 +13,7 @@ class TagRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class TagRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'project_id' => 'required|numeric',
+            'screen_id' => 'required|numeric',
+            'type' => 'required',
+            'key' => 'required|alpha_dash',
+            'description' => 'required',
         ];
     }
 }

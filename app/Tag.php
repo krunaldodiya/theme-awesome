@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Tag extends Model
 {
     protected $fillable = [
-        'type', 'key', 'project_id', 'description'
+        'project_id', 'screen_id', 'type', 'key', 'description'
     ];
 
     protected $dates = ['created_at', 'updated_at'];
