@@ -18,7 +18,7 @@ class ThemeController extends Controller
     
     public function info(Request $request)
     {
-        $theme = Theme::with('project')->where('id', $request->theme_id)->first();
+        $theme = Theme::with('project.screens')->where('id', $request->theme_id)->first();
 
         return view('theme.info', compact('theme'));
     }

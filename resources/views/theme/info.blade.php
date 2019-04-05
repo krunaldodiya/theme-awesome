@@ -2,7 +2,7 @@
 @section('content')
 <div class="container" style="font-family: verdana">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card mt-2">
                 <div class="card-header">
                     <div class="float-left">
@@ -25,6 +25,33 @@
                         <a href="/project/{{$theme->project->id}}/info">{{ strtoupper($theme->project->name) }}</a>
                         <span>&#x203A;</span>
                         <span>{{ $theme->name }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-12">
+            <div class="card mt-2">
+                <div class="card-header">
+                    <div class="float-left">
+                        Screen wise tags
+                    </div>
+                </div>
+
+                <div class="card-body" style="padding: 0px">
+                    <div class="float-left" style="width: 14%; border-right: 1px solid #ddd">
+                        <ul class="nav flex-column">
+                            @foreach ($theme->project->screens as $screen)
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#">{{$screen->name}}</a>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
+
+                    <div class="float-right text-left" style="width: 85%; padding: 5px">
+                        select a screen to edit
                     </div>
                 </div>
             </div>

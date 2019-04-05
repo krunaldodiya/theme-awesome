@@ -2,7 +2,7 @@
 @section('content')
 <div class="container" style="font-family: verdana">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card mt-2">
                 <div class="card-header">Projects ({{auth()->user()->projects->count()}})</div>
 

@@ -37,7 +37,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="/home">Project <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="/home">My Projects <span class="sr-only">(current)</span></a>
                         </li>
                     </ul>
 
