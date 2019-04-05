@@ -9,7 +9,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form action="/project/{{ $project->id }}/theme/create" method="POST" id="create_theme">
+                    <form class="form" action="/project/{{ $project->id }}/theme/create" method="POST" id="create_theme">
                         @csrf
 
                         <div class="form-group">
@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form action="/project/{{ $project->id }}/screen/create" method="POST" id="create_screen">
+                    <form class="form" action="/project/{{ $project->id }}/screen/create" method="POST" id="create_screen">
                         @csrf
 
                         <div class="form-group">

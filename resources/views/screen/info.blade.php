@@ -23,7 +23,7 @@
                         Tags ({{count($screen->tags)}})
                     </div>
                     <div class="float-right">
-                        <button type="button" class="btn btn-sm btn-primary">Create tag</button>
+                        <a href="/project/{{$screen->project->id}}/screen/{{$screen->id}}/tag/create" class="btn btn-sm btn-primary">Create tag</a>
                     </div>
                 </div>
 
