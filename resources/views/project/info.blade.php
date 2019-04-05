@@ -111,15 +111,11 @@
                     @if(count($project->screens))
                     <div style="color: black">
                         @foreach( $project->screens as $screen)
-                        <div class="clearfix" style="margin: 5px; padding: 5px">
-                            <div class="float-left" style="font-weight: 500; font-size: 16px; color: black;">
+                        <div style="margin: 5px; padding: 5px">
+                            <div style="font-weight: 500; font-size: 16px; color: black;">
                                 <a href="/project/{{ $project->id }}/screen/{{ $screen->id }}/info">
                                     <span>{{ $screen->name }}</span>
                                 </a>
-                            </div>
-
-                            <div class="float-right">
-                                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#themeModal">Attach Tag</button>
                             </div>
                         </div>
                         @endforeach
