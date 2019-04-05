@@ -44,14 +44,26 @@
                         <ul class="nav flex-column">
                             @foreach ($theme->project->screens as $screen)
                             <li class="nav-item">
-                                <a class="nav-link active" href="#">{{$screen->name}}</a>
+                                <a class="nav-link {{ request()->screen_id == $screen->id ? " disabled " : " " }}" href="?screen_id={{$screen->id}}">{{$screen->name}}</a>
                             </li>
                             @endforeach
                         </ul>
                     </div>
 
                     <div class="float-right text-left" style="width: 85%; padding: 5px">
-                        select a screen to edit
+                        @if(request()->screen_id)
+                        <ul class="nav flex-column">
+                            @foreach ($tags as $tag)
+                            <li class="nav-item">
+                                <a class="nav-link active" href="?screen_id={{$tag->id}}">{{$tag->key}}</a>
+                            </li>
+                            @endforeach
+                        </ul>
+                        @else
+                        <div>
+                            select a screen to edit
+                        </div>
+                        @endif
                     </div>
                 </div>
             </div>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Theme;
 use App\Project;
+use App\Tag;
 
 class ThemeController extends Controller
 {
@@ -18,9 +19,15 @@ class ThemeController extends Controller
     
     public function info(Request $request)
     {
+        $tags = [];
+
+        if ($request->screen_id) {
+            $tags = Tag::where('screen_id', $request->screen_id)->get();
+        }
+
         $theme = Theme::with('project.screens')->where('id', $request->theme_id)->first();
 
-        return view('theme.info', compact('theme'));
+        return view('theme.info', compact('theme', 'tags'));
     }
 
     public function createTheme(Request $request)
