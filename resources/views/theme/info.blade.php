@@ -8,6 +8,16 @@
                     <div class="float-left">
                         Theme
                     </div>
+
+                    @if($theme->project->default_theme_id != $theme->id)
+                    <div class="float-right">
+                        <a href="/project/{{$theme->project->id}}/theme/{{$theme->id}}/default" class="btn btn-sm btn-primary">Make Default</a>
+                    </div>
+                    @else
+                    <div class="float-right">
+                        <a href="#" class="btn btn-sm btn-primary disabled">Default</a>
+                    </div>
+                    @endif
                 </div>
 
                 <div class="card-body">
