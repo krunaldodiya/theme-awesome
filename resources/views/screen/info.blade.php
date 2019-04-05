@@ -12,7 +12,9 @@
 
                 <div class="card-body">
                     <div style="font-weight: 500; font-size: 16px; color: black;">
-                        {{ strtoupper($screen->project->name) }} > {{ $screen->name }}
+                        <a href="/project/{{$screen->project->id}}/info">{{ strtoupper($screen->project->name) }}</a>
+                        <span>&#x203A;</span>
+                        <span>{{ $screen->name }}</span>
                     </div>
                 </div>
             </div>

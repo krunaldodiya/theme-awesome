@@ -22,7 +22,9 @@
 
                 <div class="card-body">
                     <div style="font-weight: 500; font-size: 16px; color: black;">
-                        {{ strtoupper($theme->project->name) }} > {{ $theme->name }}
+                        <a href="/project/{{$theme->project->id}}/info">{{ strtoupper($theme->project->name) }}</a>
+                        <span>&#x203A;</span>
+                        <span>{{ $theme->name }}</span>
                     </div>
                 </div>
             </div>
