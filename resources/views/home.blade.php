@@ -4,7 +4,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card mt-2">
-                <div class="card-header">Projects</div>
+                <div class="card-header">Projects ({{auth()->user()->projects->count()}})</div>
 
                 <div class="card-body">
                     @foreach(auth()->user()->projects as $project)

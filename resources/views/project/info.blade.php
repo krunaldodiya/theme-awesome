@@ -68,21 +68,21 @@
             <div class="card mt-2">
                 <div class="card-header">
                     <div class="float-left">
-                        Themes
+                        Themes ({{count($project->themes)}})
                     </div>
                     <div class="float-right">
-                        <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#themeModal">Create</button>
+                        <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#themeModal">Create Theme</button>
                     </div>
                 </div>
 
                 <div class="card-body">
                     @if(count($project->themes))
-                    <div>
+                    <div style="padding: 5px">
                         @foreach( $project->themes as $theme)
                         <div style="margin: 5px">
                             <div style="font-weight: 500; font-size: 16px; color: black;">
                                 <a href="/project/{{ $project->id }}/theme/{{ $theme->id }}/info">
-                                    <span>{{ strtoupper($theme->name) }}</span>
+                                    <span>{{ $theme->name }}</span>
                                 </a>
                                 <span style="font-size: 12px">
                                     @if($project->default_theme_id == $theme->id) (default) @endif
@@ -100,22 +100,26 @@
             <div class="card mt-2">
                 <div class="card-header">
                     <div class="float-left">
-                        Screens
+                        Screens ({{count($project->screens)}})
                     </div>
                     <div class="float-right">
-                        <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#screenModal">Create</button>
+                        <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#screenModal">Create Screen</button>
                     </div>
                 </div>
 
                 <div class="card-body">
                     @if(count($project->screens))
-                    <div>
+                    <div style="color: black">
                         @foreach( $project->screens as $screen)
-                        <div style="margin: 5px">
-                            <div style="font-weight: 500; font-size: 16px; color: black;">
+                        <div class="clearfix" style="margin: 5px; padding: 5px">
+                            <div class="float-left" style="font-weight: 500; font-size: 16px; color: black;">
                                 <a href="/project/{{ $project->id }}/screen/{{ $screen->id }}/info">
-                                    <span>{{ strtoupper($screen->name) }}</span>
+                                    <span>{{ $screen->name }}</span>
                                 </a>
+                            </div>
+
+                            <div class="float-right">
+                                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#themeModal">Attach Tag</button>
                             </div>
                         </div>
                         @endforeach
