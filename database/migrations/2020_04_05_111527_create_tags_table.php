@@ -16,6 +16,7 @@ class CreateTagsTable extends Migration
         Schema::create('tags', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('project_id');
+            $table->integer('theme_id');
 
             $table->bigInteger('screen_id')->unsigned();
             $table->foreign('screen_id')->references('id')->on('screens')
@@ -23,6 +24,7 @@ class CreateTagsTable extends Migration
 
             $table->enum('type', ["MaterialColor", "String", "Double", "Integer"]);
             $table->string('key');
+            $table->string('value');
             $table->text('description');
             $table->timestamps();
         });

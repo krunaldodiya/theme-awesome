@@ -53,25 +53,30 @@
                     <div class="float-right text-left" style="width: 85%; padding: 5px">
                         @if(request()->screen_id)
                         <div style="color: #000">
-                            @foreach ($tags as $tag)
-                            <form class="form-inline" method="POST" style="margin: 5px">
-                                <div class="form-group" style="margin: 2px">
-                                    <input type="hidden" name="tag_id" value="{{$tag->id}}">
-                                    <input type="hidden" name="theme_id" value="{{$theme->id}}">
-                                    <input type="hidden" name="project_id" value="{{$theme->project->id}}">
-                                    <input type="text" name="value" class="form-control input-sm" placeholder="{{$tag->key}}">
-                                </div>
+                            @foreach ($theme->tags as $tag)
+                            <div>
+                                @if($tag->screen_id == request()->screen_id)
+                                <form class="form-inline" method="POST" style="margin: 5px">
+                                    <div class="form-group" style="margin: 2px">
+                                        <input type="hidden" name="tag_id" value="{{$tag->id}}">
+                                        <input type="hidden" name="theme_id" value="{{$theme->id}}">
+                                        <input type="hidden" name="project_id" value="{{$theme->project->id}}">
+                                        <input type="text" name="value" class="form-control" placeholder="">
+                                    </div>
 
-                                <div class="form-group" style="margin: 2px">
-                                    <button class="btn btn-primary btn-md" type="submit">CHANGE</button>
-                                    <button class="btn btn-primary btn-md disabled ml-2" style="width: 150px" type="button">{{$tag->type}}</button>
-                                </div>
-                            </form>
+                                    <div class="form-group" style="margin: 2px">
+                                        <button class="btn btn-primary btn-md" type="submit">CHANGE</button>
+                                        <button class="btn btn-primary btn-md disabled ml-2" type="button">{{$tag->key}}</button>
+                                        <button class="btn btn-primary btn-md disabled ml-2" style="width: 120px" type="button">{{$tag->type}}</button>
+                                    </div>
+                                </form>
+                                @endif
+                            </div>
                             @endforeach
                         </div>
                         @else
                         <div>
-                            select a screen to edit
+                            Select a screen to edit tags
                         </div>
                         @endif
                     </div>

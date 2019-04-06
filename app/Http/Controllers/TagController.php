@@ -38,6 +38,6 @@ class TagController extends Controller
 
     public function delete(Request $request)
     {
-        return Tag::delete();
+        return Tag::delete($request->tag_id);
     }
 }
