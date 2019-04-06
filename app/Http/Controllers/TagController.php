@@ -49,6 +49,13 @@ class TagController extends Controller
         return redirect()->to("/project/$request->project_id/screen/$request->screen_id/info");
     }
 
+    public function update(Request $request)
+    {
+        Tag::where('id', $request->tag_id)->update(['value' => $request->value]);
+
+        return redirect()->back();
+    }
+
     public function delete(Request $request)
     {
         return Tag::delete($request->tag_id);

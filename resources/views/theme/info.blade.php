@@ -56,7 +56,8 @@
                             @foreach ($theme->tags as $tag)
                             <div>
                                 @if($tag->screen_id == request()->screen_id)
-                                <form class="form-inline" method="POST" style="margin: 5px">
+                                <form action="/project/{{$tag->project_id}}/screen/{{$tag->screen_id}}/tag/update" class="form-inline" method="POST" style="margin: 5px">
+                                    @csrf
                                     <div class="form-group" style="margin: 2px">
                                         <input type="hidden" name="tag_id" value="{{$tag->id}}">
                                         <input type="hidden" name="theme_id" value="{{$theme->id}}">

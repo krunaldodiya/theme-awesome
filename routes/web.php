@@ -15,3 +15,4 @@ Route::post('/project/{project_id}/screen/create', 'ScreenController@createScree
 Route::get('/project/{project_id}/screen/{screen_id}/info', 'ScreenController@info')->name('screen-info');
 Route::get('/project/{project_id}/screen/{screen_id}/tag/create', 'TagController@create')->name('create-tag');
 Route::post('/project/{project_id}/screen/{screen_id}/tag/create', 'TagController@store')->name('store-tag');
+Route::post('/project/{project_id}/screen/{screen_id}/tag/update', 'TagController@update')->name('update-tag');
