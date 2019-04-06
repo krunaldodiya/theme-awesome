@@ -19,6 +19,6 @@ class Theme extends Model
 
     public function tags()
     {
-        return $this->belongsToMany(Tag::class, 'tag_theme');
+        return $this->hasMany(Tag::class);
     }
 }

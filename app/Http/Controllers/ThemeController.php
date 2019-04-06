@@ -20,10 +20,7 @@ class ThemeController extends Controller
     
     public function info(Request $request)
     {
-        $test = Tag::get();
-        dd($test->toArray());
-
-        $theme = Theme::with('project.screens', 'tags')->where('id', $request->theme_id)->first();
+        $theme = Theme::with('project', 'tags')->where('id', $request->theme_id)->first();
 
         return view('theme.info', compact('theme'));
     }

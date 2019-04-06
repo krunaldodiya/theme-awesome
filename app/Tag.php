@@ -12,13 +12,18 @@ class Tag extends Model
 
     protected $dates = ['created_at', 'updated_at'];
 
+    public function project()
+    {
+        return $this->belongsTo(Project::class);
+    }
+
     public function screen()
     {
         return $this->belongsTo(Screen::class);
     }
 
-    public function themes()
+    public function theme()
     {
-        return $this->belongsToMany(Theme::class, 'tag_theme');
+        return $this->belongsTo(Theme::class);
     }
 }
