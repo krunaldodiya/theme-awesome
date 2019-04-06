@@ -7,6 +7,7 @@ use App\Tag;
 use App\Screen;
 use App\Http\Requests\TagRequest;
 use App\Theme;
+use Carbon\Carbon;
 
 class TagController extends Controller
 {
@@ -29,9 +30,21 @@ class TagController extends Controller
             return redirect()->back()->withErrors(['exists' => 'Tag key must be unique']);
         }
 
-        $tag = Tag::create($request->all());
+        $data = Theme::all()->map(function ($theme) use ($request) {
+            return [
+                'project_id' => $request->project_id,
+                'theme_id' => $theme->id,
+                'screen_id' => $request->screen_id,
+                'type' => $request->type,
+                'key' => $request->key,
+                'value' => $request->value,
+                'description' => $request->description,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ];
+        });
 
-        $tag->themes()->attach(Theme::where('project_id', $request->project_id)->pluck('id'));
+        Tag::insert($data->toArray());
 
         return redirect()->to("/project/$request->project_id/screen/$request->screen_id/info");
     }

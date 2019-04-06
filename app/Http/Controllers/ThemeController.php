@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Theme;
 use App\Project;
 use App\Tag;
-use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class ThemeController extends Controller
 {
@@ -38,11 +38,23 @@ class ThemeController extends Controller
 
         $theme = Theme::create(['project_id' => $request->project_id, 'name' => $request->name]);
 
-        $theme->tags()->attach(Tag::where('project_id', $request->project_id)->pluck('id'));
+        $tags = Tag::where('theme_id', $theme->project->default_theme_id)->get();
+        
+        $data = $tags->map(function ($tag) use ($theme) {
+            return [
+                'project_id' => $tag->project_id,
+                'theme_id' => $theme->id,
+                'screen_id' => $tag->screen_id,
+                'type' => $tag->type,
+                'key' => $tag->key,
+                'value' => $tag->value,
+                'description' => $tag->description,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ];
+        });
 
-        if ($theme->project->default_theme_id == null) {
-            $theme->project->update(['default_theme_id' => $theme->id]);
-        }
+        Tag::insert($data->toArray());
 
         return redirect()->back();
     }

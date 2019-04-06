@@ -24,7 +24,7 @@ class CreateTagsTable extends Migration
 
             $table->enum('type', ["MaterialColor", "String", "Double", "Integer"]);
             $table->string('key');
-            $table->string('value');
+            $table->string('value')->nullable();
             $table->text('description');
             $table->timestamps();
         });
