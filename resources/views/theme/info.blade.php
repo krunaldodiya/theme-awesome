@@ -35,7 +35,7 @@
             <div class="card mt-2">
                 <div class="card-header">
                     <div class="float-left">
-                        Screen wise tags
+                        Screen wise Tags
                     </div>
                 </div>
 
@@ -43,7 +43,7 @@
                     <div class="float-left" style="width: 14%; border-right: 1px solid #ddd">
                         <ul class="nav flex-column">
                             @foreach ($theme->project->screens as $screen)
-                            <li class="nav-item">
+                            <li class="nav-item" style="border-bottom: 1px solid #ddd">
                                 <a class="nav-link {{ request()->screen_id == $screen->id ? " disabled " : " " }}" href="?screen_id={{$screen->id}}">{{$screen->name}}</a>
                             </li>
                             @endforeach
@@ -52,13 +52,23 @@
 
                     <div class="float-right text-left" style="width: 85%; padding: 5px">
                         @if(request()->screen_id)
-                        <ul class="nav flex-column">
+                        <div style="color: #000">
                             @foreach ($tags as $tag)
-                            <li class="nav-item">
-                                <a class="nav-link active" href="?screen_id={{$tag->id}}">{{$tag->key}}</a>
-                            </li>
+                            <form class="form-inline" method="POST" style="margin: 5px">
+                                <div class="form-group" style="margin: 2px">
+                                    <input type="hidden" name="tag_id" value="{{$tag->id}}">
+                                    <input type="hidden" name="theme_id" value="{{$theme->id}}">
+                                    <input type="hidden" name="project_id" value="{{$theme->project->id}}">
+                                    <input type="text" name="value" class="form-control input-sm" placeholder="{{$tag->key}}">
+                                </div>
+
+                                <div class="form-group" style="margin: 2px">
+                                    <button class="btn btn-primary btn-md" type="submit">CHANGE</button>
+                                    <button class="btn btn-primary btn-md disabled ml-2" style="width: 150px" type="button">{{$tag->type}}</button>
+                                </div>
+                            </form>
                             @endforeach
-                        </ul>
+                        </div>
                         @else
                         <div>
                             select a screen to edit

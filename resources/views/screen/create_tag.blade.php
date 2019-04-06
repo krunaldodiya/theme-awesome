@@ -13,14 +13,12 @@
                 @csrf
 
                 <input type="hidden" name="project_id" value="{{$screen->project->id}}">
-
                 <input type="hidden" name="screen_id" value="{{$screen->id}}">
 
                 <div class="form-group">
                     <label for="usr">Type:</label>
                     <select class="form-control" name="type" id="type">
                         <option value="MaterialColor">MaterialColor</option>
-                        <option value="Boolean">Boolean</option>
                         <option value="String">String</option>
                         <option value="Double">Double</option>
                         <option value="Integer">Integer</option>

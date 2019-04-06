@@ -16,4 +16,9 @@ class Tag extends Model
     {
         return $this->belongsTo(Screen::class);
     }
+
+    public function themes()
+    {
+        return $this->belongsToMany(Theme::class, 'tag_theme');
+    }
 }

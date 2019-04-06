@@ -32,7 +32,15 @@ class ThemeController extends Controller
 
     public function createTheme(Request $request)
     {
+        $exits = Theme::where(['project_id' => $request->project_id, 'name' => $request->name])->count();
+
+        if ($exits) {
+            return redirect()->back()->withErrors(['exists' => 'Theme name must be unique']);
+        }
+
         $theme = Theme::create(['project_id' => $request->project_id, 'name' => $request->name]);
+
+        $theme->tags()->attach(Tag::where('project_id', $request->project_id)->pluck('id'));
 
         if ($theme->project->default_theme_id == null) {
             $theme->project->update(['default_theme_id' => $theme->id]);

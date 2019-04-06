@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Tag;
 use App\Screen;
 use App\Http\Requests\TagRequest;
+use App\Theme;
 
 class TagController extends Controller
 {
@@ -25,10 +26,12 @@ class TagController extends Controller
         $exits = Tag::where(['project_id' => $request->project_id, 'key' => $request->key])->count();
 
         if ($exits) {
-            return redirect()->back()->withErrors(['exists' => 'Key must be unique']);
+            return redirect()->back()->withErrors(['exists' => 'Tag key must be unique']);
         }
 
-        Tag::create($request->all());
+        $tag = Tag::create($request->all());
+
+        $tag->themes()->attach(Theme::where('project_id', $request->project_id)->pluck('id'));
 
         return redirect()->to("/project/$request->project_id/screen/$request->screen_id/info");
     }
