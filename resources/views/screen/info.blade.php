@@ -12,7 +12,7 @@
 
                 <div class="card-body">
                     <div style="font-weight: 500; font-size: 16px; color: black;">
-                        <a href="/project/{{$screen->project->id}}/info">{{ strtoupper($screen->project->name) }}</a>
+                        <a href="/project/{{$project->id}}/info">{{ strtoupper($project->name) }}</a>
                         <span>&#x203A;</span>
                         <span>{{ $screen->name }}</span>
                     </div>
@@ -22,17 +22,17 @@
             <div class="card mt-2">
                 <div class="card-header">
                     <div class="float-left">
-                        Tags ({{count($screen->tags)}})
+                        Tags ({{count($tags)}})
                     </div>
                     <div class="float-right">
-                        <a href="/project/{{$screen->project->id}}/screen/{{$screen->id}}/tag/create" class="btn btn-sm btn-primary">Create tag</a>
+                        <a href="/project/{{$project->id}}/screen/{{$project['screen']['id']}}/tag/create" class="btn btn-sm btn-primary">Create tag</a>
                     </div>
                 </div>
 
                 <div class="card-body">
-                    @if(count($screen->tags))
+                    @if(count($tags))
                     <div style="color: black">
-                        @foreach( $screen->tags as $tag)
+                        @foreach( $tags as $tag)
                         <div style="margin: 5px; padding: 5px">
                             <div style="font-weight: 500; font-size: 16px; color: black;">
                                 <span>{{ $tag->key }}</span>
