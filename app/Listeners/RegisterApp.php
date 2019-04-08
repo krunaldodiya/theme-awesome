@@ -29,8 +29,8 @@ class RegisterApp
         $user = $event->user;
         $name = $user->name;
 
-        $project = $user->projects()->create(['name' => "${name}'s project", 'default' => true]);
-        $theme = $project->themes()->create(['name' => 'default']);
+        $project = $user->projects()->create(['name' => "My Project", 'default' => true]);
+        $theme = $project->themes()->create(['name' => 'My Theme']);
         
         $project->update(['default_theme_id' => $theme->id]);
     }

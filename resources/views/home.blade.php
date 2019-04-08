@@ -4,14 +4,21 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card mt-2">
-                <div class="card-header">Projects ({{auth()->user()->projects->count()}})</div>
+                <div class="card-header">
+                    <div class="float-left">
+                        Projects ({{auth()->user()->projects->count()}})
+                    </div>
+                    <div class="float-right">
+                        <a href="/" class="btn btn-sm btn-primary">Create Project</a>
+                    </div>
+                </div>
 
                 <div class="card-body">
                     @foreach(auth()->user()->projects as $project)
                     <div>
                         <a href="/project/{{ $project->id }}/info">
                             <div style="font-weight: 500; font-size: 16px; color: blue;">
-                                {{ strtoupper($project->name) }}
+                                {{ $project->name }}
                             </div>
                         </a>
 

@@ -56,7 +56,15 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card mt-2">
-                <div class="card-header">Project</div>
+                <div class="card-header">
+                    <div class="float-left">
+                        Projects
+                    </div>
+                    <div class="float-right">
+                        <a href="/" class="btn btn-sm btn-success">Edit</a>
+                        <a href="/" class="btn btn-sm btn-danger">Delete</a>
+                    </div>
+                </div>
 
                 <div class="card-body">
                     <div style="font-weight: 500; font-size: 16px; color: black;">
