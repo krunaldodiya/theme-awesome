@@ -24,8 +24,6 @@ class TagController extends Controller
 
     public function store(TagRequest $request)
     {
-        dd("test");
-
         $exits = Tag::where(['project_id' => $request->project_id, 'key' => $request->key])->count();
 
         if ($exits) {
