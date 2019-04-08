@@ -62,13 +62,20 @@
                                         <input type="hidden" name="tag_id" value="{{$tag->id}}">
                                         <input type="hidden" name="theme_id" value="{{$theme->id}}">
                                         <input type="hidden" name="project_id" value="{{$theme->project->id}}">
-                                        <input type="text" name="value" class="form-control" value="{{$tag->value}}">
+                                        <input type="text" name="value" class="form-control colorpicker" value="{{$tag->value}}">
                                     </div>
 
                                     <div class="form-group" style="margin: 2px">
                                         <button class="btn btn-primary btn-md" type="submit">CHANGE</button>
+
+                                        <div>
+                                            @if($tag->type == "MaterialColor")
+                                            <div style="width: 35px; height: 35px; background: {{$tag->value}}; margin-left: 8px; border-radius: 5px"></div>
+                                            @endif
+                                        </div>
+
+                                        <button class="btn btn-primary btn-md disabled ml-2" style="width: 120px;" type="button">{{$tag->type}}</button>
                                         <button class="btn btn-primary btn-md disabled ml-2" type="button">{{$tag->key}}</button>
-                                        <button class="btn btn-primary btn-md disabled ml-2" style="width: 120px" type="button">{{$tag->type}}</button>
                                     </div>
                                 </form>
                                 @endif
