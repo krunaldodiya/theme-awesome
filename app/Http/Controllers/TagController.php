@@ -24,20 +24,22 @@ class TagController extends Controller
 
     public function store(TagRequest $request)
     {
+        $default_value =config('tag')[$request->type];
+
         $exits = Tag::where(['project_id' => $request->project_id, 'key' => $request->key])->count();
 
         if ($exits) {
             return redirect()->back()->withErrors(['exists' => 'Tag key must be unique']);
         }
 
-        $data = Theme::all()->map(function ($theme) use ($request) {
+        $data = Theme::all()->map(function ($theme) use ($request, $default_value) {
             return [
                 'project_id' => $request->project_id,
                 'theme_id' => $theme->id,
                 'screen_id' => $request->screen_id,
                 'type' => $request->type,
                 'key' => $request->key,
-                'value' => $request->value,
+                'value' => $default_value,
                 'description' => $request->description,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
