@@ -73,7 +73,7 @@
 
                                         <div>
                                             @if($tag->type == "MaterialColor")
-                                            <div style="width: 35px; height: 35px; background: {{$tag->value}}; margin-left: 8px; border-radius: 5px"></div>
+                                            <div style="width: 35px; height: 35px; background: {{hello($tag->value)}}; margin-left: 8px; border-radius: 5px"></div>
                                             @endif
                                         </div>
 
