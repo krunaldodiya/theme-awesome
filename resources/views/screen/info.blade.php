@@ -8,6 +8,13 @@
                     <div class="float-left">
                         Screen
                     </div>
+
+                    <div class="float-right">
+                        <div>
+                            <a href="#" class="btn btn-sm btn-success">Edit</a>
+                            <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="card-body">
@@ -49,8 +56,7 @@
                                 <form method="POST" action="/tags/delete">
                                     @csrf
 
-                                    <input type="hidden" name="tag_id" value="{{$tag->id}}">
-
+                                    <input type="hidden" name="tag_key" value="{{$tag->key}}">
                                     <button type="submit" class="btn btn-sm btn-danger">
                                         Delete
                                     </button>

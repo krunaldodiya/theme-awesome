@@ -58,7 +58,7 @@ class TagController extends Controller
 
     public function deleteTag(Request $request)
     {
-        Tag::where('id', $request->tag_id)->delete();
+        Tag::where('tag_key', $request->tag_key)->delete();
 
         return redirect()->back();
     }

@@ -25,6 +25,12 @@ class ScreenController extends Controller
 
     public function createScreen(Request $request)
     {
+        $exits = Screen::where(['project_id' => $request->project_id, 'name' => $request->name])->count();
+
+        if ($exits) {
+            return redirect()->back()->withErrors(['exists' => 'Screen name must be unique']);
+        }
+
         Screen::create(['project_id' => $request->project_id, 'name' => $request->name]);
 
         return redirect()->back();

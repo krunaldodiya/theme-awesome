@@ -9,7 +9,7 @@
                         Projects ({{auth()->user()->projects->count()}})
                     </div>
                     <div class="float-right">
-                        <a href="/" class="btn btn-sm btn-primary">Create Project</a>
+                        <a href="#" class="btn btn-sm btn-primary">Create Project</a>
                     </div>
                 </div>
 

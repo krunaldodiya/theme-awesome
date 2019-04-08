@@ -61,14 +61,14 @@
                         Projects
                     </div>
                     <div class="float-right">
-                        <a href="/" class="btn btn-sm btn-success">Edit</a>
-                        <a href="/" class="btn btn-sm btn-danger">Delete</a>
+                        <a href="#" class="btn btn-sm btn-success">Edit</a>
+                        <a href="#" class="btn btn-sm btn-danger">Delete</a>
                     </div>
                 </div>
 
                 <div class="card-body">
                     <div style="font-weight: 500; font-size: 16px; color: black;">
-                        {{ strtoupper($project->name) }}
+                        {{ $project->name }}
                     </div>
                 </div>
             </div>

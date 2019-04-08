@@ -9,15 +9,15 @@
                         Theme
                     </div>
 
-                    @if($theme->project->default_theme_id != $theme->id)
                     <div class="float-right">
-                        <a href="/project/{{$theme->project->id}}/theme/{{$theme->id}}/default" class="btn btn-sm btn-primary">Make Default</a>
+                        <div>
+                            <a href="#" class="btn btn-sm btn-success">Edit</a>
+                            <a href="#" class="btn btn-sm btn-danger">Delete</a> @if($theme->project->default_theme_id !=
+                            $theme->id)
+                            <a href="/project/{{$theme->project->id}}/theme/{{$theme->id}}/default" class="btn btn-sm btn-primary">Make Default</a>                            @endif @if($theme->project->default_theme_id == $theme->id)
+                            <a href="#" class="btn btn-sm btn-primary disabled">Default</a> @endif
+                        </div>
                     </div>
-                    @else
-                    <div class="float-right">
-                        <a href="#" class="btn btn-sm btn-primary disabled">Default</a>
-                    </div>
-                    @endif
                 </div>
 
                 <div class="card-body">
