@@ -24,6 +24,8 @@ class TagController extends Controller
 
     public function store(TagRequest $request)
     {
+        dd("test");
+
         $exits = Tag::where(['project_id' => $request->project_id, 'key' => $request->key])->count();
 
         if ($exits) {
@@ -51,7 +53,7 @@ class TagController extends Controller
 
     public function update(Request $request)
     {
-        Tag::where('id', $request->tag_id)->update(['value' => $request->value]);
+        Tag::where('id', $request->tag_id)->update(['value' => $request->type == "MaterialColor" ? str_replace("#", "0xff", $request->value): $request->value]);
 
         return redirect()->back();
     }
