@@ -29,4 +29,11 @@ class ScreenController extends Controller
 
         return redirect()->back();
     }
+
+    public function deleteScreen(Request $request)
+    {
+        Screen::where('id', $request->screen_id)->delete();
+
+        return redirect()->back();
+    }
 }

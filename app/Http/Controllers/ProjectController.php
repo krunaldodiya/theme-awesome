@@ -25,4 +25,11 @@ class ProjectController extends Controller
 
         return compact('project');
     }
+
+    public function deleteProject(Request $request)
+    {
+        Project::where('id', $request->project_id)->delete();
+
+        return redirect()->back();
+    }
 }

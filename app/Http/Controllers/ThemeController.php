@@ -55,4 +55,11 @@ class ThemeController extends Controller
 
         return redirect()->back();
     }
+
+    public function deleteTheme(Request $request)
+    {
+        Theme::where('id', $request->theme_id)->delete();
+
+        return redirect()->back();
+    }
 }
