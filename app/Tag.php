@@ -12,15 +12,6 @@ class Tag extends Model
 
     protected $dates = ['created_at', 'updated_at'];
 
-    public function getValueAttribute($value)
-    {
-        if ($this->type == "MaterialColor") {
-            return str_replace("0xff", "#", $value);
-        }
-
-        return $value;
-    }
-
     public function project()
     {
         return $this->belongsTo(Project::class);

@@ -63,8 +63,9 @@
                                         <input type="hidden" name="theme_id" value="{{$theme->id}}">
                                         <input type="hidden" name="project_id" value="{{$theme->project->id}}">
                                         <input type="hidden" name="type" value="{{$tag->type}}">
-                                        <input type="hidden" name="key" value="{{$tag->key}}">
-                                        <input type="text" name="value" class="form-control colorpicker" value="{{$tag->value}}">
+                                        <input type="hidden" name="key" value="{{$tag->key}}"> @if($tag->type == "MaterialColor")
+                                        <input type="text" name="value" class="form-control" value="{{hello($tag->value)}}">                                        @else
+                                        <input type="text" name="value" class="form-control" value="{{$tag->value}}"> @endif
                                     </div>
 
                                     <div class="form-group" style="margin: 2px">
