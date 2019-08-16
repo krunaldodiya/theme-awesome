@@ -21,6 +21,7 @@ class ProjectController extends Controller
 
     public function getProject(Request $request)
     {
+        return ['test' => true];
 
         $project = Project::where('secret_key', $request->secret_key)->first();
 
