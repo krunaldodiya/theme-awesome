@@ -26,7 +26,11 @@ class TagController extends Controller
     {
         $default_value = config('tag')[$request->type];
 
-        $exits = Tag::where(['project_id' => $request->project_id, 'key' => $request->key])->count();
+        $exits = Tag::where([
+            'project_id' => $request->project_id,
+            'screen_id' => $request->screen_id,
+            'key' => $request->key
+        ])->count();
 
         if ($exits) {
             return redirect()->back()->withErrors(['exists' => 'Tag key must be unique']);
