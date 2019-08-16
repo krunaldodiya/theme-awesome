@@ -16,7 +16,6 @@ class CreateScreensTable extends Migration
         Schema::create('screens', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer("project_id");
-            $table->integer("screen_id");
             $table->string('name');
             $table->timestamps();
         });

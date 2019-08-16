@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Project;
+use App\Tag;
 
 class ProjectController extends Controller
 {
@@ -19,11 +20,14 @@ class ProjectController extends Controller
 
     public function getProject(Request $request)
     {
-        $project = Project::with('screens.themes.tags')
-            ->where('secret_key', $request->secret_key)
-            ->first(['id', 'secret_key', 'default_theme_id']);
 
-        return compact('project');
+        $project = Project::where('secret_key', $request->secret_key)->first();
+
+        $theme_id = $request->theme_id ?? $project->default_theme_id;
+
+        $tags = Tag::where('theme_id', $theme_id)->get();
+
+        return compact('project', 'tags');
     }
 
     public function deleteProject(Request $request)

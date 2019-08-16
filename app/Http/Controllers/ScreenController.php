@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Screen;
 use App\Project;
 use App\Tag;
+use App\Theme;
+use Carbon\Carbon;
 
 class ScreenController extends Controller
 {
@@ -14,10 +16,10 @@ class ScreenController extends Controller
         $project = Project::where('id', $request->project_id)->first();
         $screen = Screen::where('id', $request->screen_id)->first();
         $tags = Tag::where([
-                'project_id' => $request->project_id,
-                'screen_id' => $request->screen_id,
-                'theme_id' => $project->default_theme_id
-            ])
+            'project_id' => $request->project_id,
+            'screen_id' => $request->screen_id,
+            'theme_id' => $project->default_theme_id
+        ])
             ->get();
 
         return view('screen.info', compact('project', 'screen', 'tags'));

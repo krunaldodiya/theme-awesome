@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Theme;
 use App\Project;
+use App\Screen;
 use App\Tag;
 use Carbon\Carbon;
 
@@ -29,7 +30,6 @@ class ThemeController extends Controller
     {
         $exits = Theme::where([
             'project_id' => $request->project_id,
-            'screen_id' => $request->screen_id,
             'name' => $request->name
         ])->count();
 
@@ -39,7 +39,6 @@ class ThemeController extends Controller
 
         $theme = Theme::create([
             'project_id' => $request->project_id,
-            'screen_id' => $request->screen_id,
             'name' => $request->name
         ]);
 

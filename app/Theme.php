@@ -17,11 +17,6 @@ class Theme extends Model
         return $this->belongsTo(Project::class);
     }
 
-    public function screens()
-    {
-        return $this->hasMany(Screen::class);
-    }
-
     public function tags()
     {
         return $this->hasMany(Tag::class);
