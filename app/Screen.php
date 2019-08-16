@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Screen extends Model
 {
     protected $fillable = [
-        'project_id', 'name'
+        'project_id', 'key', 'name'
     ];
 
     protected $dates = ['created_at', 'updated_at'];
