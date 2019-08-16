@@ -1,4 +1,4 @@
-@extends('layouts.app') 
+@extends('layouts.app')
 @section('content')
 <div class="flex-center position-ref full-height">
     <div class="container">
@@ -9,7 +9,8 @@
         @endif
 
         <div class="content">
-            <form class="form" action="/project/{{ $screen->project->id }}/screen/{{ $screen->id }}/tag/create" method="POST" id="create_tag">
+            <form class="form" action="/project/{{ $screen->project->id }}/screen/{{ $screen->id }}/tag/create"
+                method="POST" id="create_tag">
                 @csrf
 
                 <input type="hidden" name="project_id" value="{{$screen->project->id}}">
@@ -18,10 +19,8 @@
                 <div class="form-group">
                     <label for="usr">Type:</label>
                     <select class="form-control" name="type" id="type">
-                        <option value="MaterialColor">MaterialColor</option>
                         <option value="String">String</option>
-                        <option value="Double">Double</option>
-                        <option value="Integer">Integer</option>
+                        <option value="Number">Number</option>
                     </select>
                 </div>
 
@@ -40,8 +39,22 @@
 
                 <div class="form-group">
                     <div>
+                        <label for="usr">Value:</label>
+                        <textarea class="form-control" name="value" id="value" rows="3" placeholder="Value"></textarea>
+                    </div>
+
+                    @if ($errors->has('default'))
+                    <div class="alert alert-danger" style="margin-top: 5px">
+                        <li>{{ $errors->first('default') }}</li>
+                    </div>
+                    @endif
+                </div>
+
+                <div class="form-group">
+                    <div>
                         <label for="usr">Description:</label>
-                        <textarea class="form-control" name="description" id="description" rows="3" placeholder="Description"></textarea>
+                        <textarea class="form-control" name="description" id="description" rows="3"
+                            placeholder="Description"></textarea>
                     </div>
 
                     @if ($errors->has('description'))

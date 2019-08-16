@@ -22,9 +22,9 @@ class CreateTagsTable extends Migration
             $table->foreign('screen_id')->references('id')->on('screens')
                 ->onUpdate('cascade')->onDelete('cascade');
 
-            $table->enum('type', ["MaterialColor", "String", "Double", "Integer"]);
+            $table->string('type');
             $table->string('key');
-            $table->string('value')->nullable();
+            $table->string('value');
             $table->text('description');
             $table->timestamps();
         });
