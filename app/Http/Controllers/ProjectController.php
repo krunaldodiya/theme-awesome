@@ -19,7 +19,7 @@ class ProjectController extends Controller
 
     public function getProject(Request $request)
     {
-        $project = Project::with('themes.tags')
+        $project = Project::with('screens.themes.tags')
             ->where('secret_key', $request->secret_key)
             ->first(['id', 'secret_key', 'default_theme_id']);
 
