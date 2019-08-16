@@ -8,6 +8,7 @@ use App\Project;
 use App\Tag;
 use App\Theme;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 
 class ScreenController extends Controller
 {
@@ -27,13 +28,15 @@ class ScreenController extends Controller
 
     public function createScreen(Request $request)
     {
-        $exits = Screen::where(['project_id' => $request->project_id, 'key' => $request->key])->count();
+        $key = Str::slug($request->name, '_');
+
+        $exits = Screen::where(['project_id' => $request->project_id, 'key' => $key])->count();
 
         if ($exits) {
             return redirect()->back()->withErrors(['exists' => 'Screen key must be unique']);
         }
 
-        Screen::create(['project_id' => $request->project_id, 'key' => $request->key, 'name' => $request->name]);
+        Screen::create(['project_id' => $request->project_id, 'key' => $key, 'name' => $request->name]);
 
         return redirect()->back();
     }
