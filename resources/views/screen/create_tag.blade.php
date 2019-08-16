@@ -40,7 +40,7 @@
                 <div class="form-group">
                     <div>
                         <label for="usr">Value:</label>
-                        <textarea class="form-control" name="value" id="value" rows="3" placeholder="Value"></textarea>
+                        <input type="text" class="form-control" name="value" id="value" placeholder="Key Value">
                     </div>
 
                     @if ($errors->has('default'))
