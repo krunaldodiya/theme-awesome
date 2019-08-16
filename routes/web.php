@@ -4,7 +4,7 @@ Auth::routes();
 
 Route::get('/', 'HomeController@welcome')->name('welcome');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::post('/project/{secret_key}', 'ProjectController@getProject')->name('project-by-secret');
+Route::post('/project/{secret_key}/info', 'ProjectController@getProject')->name('project-by-secret');
 Route::get('/project/{project_id}/info', 'ProjectController@info')->name('project-info');
 Route::post('/project/{project_id}/theme/create', 'ThemeController@createTheme')->name('create-theme');
 Route::get('/project/{project_id}/theme/{theme_id}/default', 'ThemeController@toggleDefault')->name('toggle-default');
